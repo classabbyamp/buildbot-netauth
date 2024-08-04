@@ -1,0 +1,33 @@
+name: CI
+on: [ push, pull_request ]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install uv
+          uv venv
+          uv pip compile pyproject.toml --extra ci | uv pip install -r -
+      - name: ruff check
+        run: .venv/bin/ruff check --output-format=github .
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install uv
+          uv venv
+          uv pip compile pyproject.toml --extra ci | uv pip install -r -
+      - name: ruff format
+        run: .venv/bin/ruff format --diff .

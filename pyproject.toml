@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "buildbot-netauth"
+authors = [
+    {name = "classabbyamp", email = "dev@placeviolette.net"}
+]
+description = "buildbot plugin for integration with NetAuth"
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["secure-access", "authentication-service", "netauth", "buildbot"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dynamic = ["version"]
+dependencies = [
+    "netauth",
+    "buildbot~=4.0.0",
+]
+
+[project.optional-dependencies]
+ci = [
+    "ruff",
+]
+publish = [
+    "twine",
+]
+
+[project.entry-points."buildbot.util"]
+BuildbotNetAuth = "buildbot_netauth:BuildbotNetAuth"
+
+[project.urls]
+Repository = "https://github.com/classabbyamp/buildbot-netauth"
+Changelog = "https://github.com/classabbyamp/buildbot-netauth/blob/master/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["buildbot_netauth"]
+
+[tool.setuptools.dynamic]
+version = {attr = "buildbot_netauth.__version__"}
+
+[tool.ruff]
+include = ["buildbot_netauth/**"]
+line-length = 120
+indent-width = 4
+target-version = "py311"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"

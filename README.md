@@ -20,11 +20,9 @@ c["www"]["avatar_methods"] = [netauth, ...]
 
 ### Notes
 
-- The plugin looks at the entity KV store key `avatar` to set the avatar. Store a URL to an image there.
-- The plugin sets the email address of the user to `entity_id@netauth`.
 The plugin looks at the following metadata on NetAuth entities:
 
-- entity ID: used as an "email" in the format `entity_id@netauth`
+- entity ID: used as an "email" in the format `entity_id@domain`. `domain` is the base domain of the NetAuth server, but is overridable.
 - entity display name or legal name: if set, will be used for the `full_name` buildbot user property in that fallback order
 - entity group membership: used for the `groups` buildbot user property and can be used for buildbot authz, for example:
 

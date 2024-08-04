@@ -28,6 +28,7 @@ ci = [
     "ruff",
 ]
 publish = [
+    "build",
     "twine",
 ]
 

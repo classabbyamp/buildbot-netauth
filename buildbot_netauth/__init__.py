@@ -8,7 +8,7 @@ from buildbot.www.auth import UserInfoProviderBase, bytes2unicode, unicode2bytes
 from twisted.internet import defer
 from twisted.cred.error import UnauthorizedLogin
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 
 __all__ = ["BuildbotNetAuth"]
 

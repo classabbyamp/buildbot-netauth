@@ -20,16 +20,12 @@ classifiers = [
 dynamic = ["version"]
 dependencies = [
     "netauth",
-    "buildbot~=4.0.0",
+    "buildbot~=4.0",
 ]
 
 [project.optional-dependencies]
 ci = [
     "ruff",
-]
-publish = [
-    "build",
-    "twine",
 ]
 
 [project.entry-points."buildbot.util"]
